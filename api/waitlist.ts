@@ -19,8 +19,21 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    // Send both emails in parallel
+    // Send emails + save contact to Resend Contacts (for broadcast at launch)
     await Promise.all([
+      // 0. Save to Resend Contacts so we can broadcast at launch
+      fetch('https://api.resend.com/contacts', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          unsubscribed: false,
+        }),
+      }),
+
       // 1. Notify you
       fetch('https://api.resend.com/emails', {
         method: 'POST',
