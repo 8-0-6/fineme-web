@@ -1,7 +1,0 @@
-{
-  "name": "FineMe",
-  "description": "A behavioral-science-backed fitness app using financial loss aversion.",
-  "requestFramePermissions": [
-    "camera"
-  ]
-}

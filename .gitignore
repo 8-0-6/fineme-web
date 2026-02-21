@@ -22,3 +22,15 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Mobile app (separate repo)
+FineMeMobile/
+
+# Non-web files
+components/
+.expo/
+supabase/
+constants.tsx
+types.ts
+metadata.json
+README.md
