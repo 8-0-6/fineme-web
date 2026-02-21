@@ -29,25 +29,24 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       body: JSON.stringify({ email, unsubscribed: false }),
     }).catch((err) => console.error('Contact save failed (non-fatal):', err));
 
-    // Send both emails in parallel
-    const [notifyRes, confirmRes] = await Promise.all([
-      // 1. Notify you
-      fetch('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${apiKey}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          from: 'FineMe <team@fineme.io>',
-          to: 'team@fineme.io',
-          subject: `New waitlist signup: ${email}`,
-          html: `<div style="font-family: monospace; background: #000; color: #fff; padding: 32px;"><p style="color: #bef264; font-weight: 900; font-size: 18px; margin: 0 0 16px;">New waitlist signup</p><p style="color: #a1a1aa; margin: 0;">Email: <span style="color: #fff;">${email}</span></p><p style="color: #71717a; font-size: 12px; margin: 16px 0 0;">${new Date().toUTCString()}</p></div>`,
-        }),
+    // Send emails sequentially to stay within Resend's 2 req/sec rate limit
+    // 1. Notify you
+    const notifyRes = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: 'FineMe <team@fineme.io>',
+        to: 'team@fineme.io',
+        subject: `New waitlist signup: ${email}`,
+        html: `<div style="font-family: monospace; background: #000; color: #fff; padding: 32px;"><p style="color: #bef264; font-weight: 900; font-size: 18px; margin: 0 0 16px;">New waitlist signup</p><p style="color: #a1a1aa; margin: 0;">Email: <span style="color: #fff;">${email}</span></p><p style="color: #71717a; font-size: 12px; margin: 16px 0 0;">${new Date().toUTCString()}</p></div>`,
       }),
+    });
 
-      // 2. Confirm to the user
-      fetch('https://api.resend.com/emails', {
+    // 2. Confirm to the user
+    const confirmRes = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${apiKey}`,
@@ -118,8 +117,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             </html>
           `,
         }),
-      }),
-    ]);
+    });
 
     // Log responses for debugging
     const notifyBody = await notifyRes.json().catch(() => ({}));
