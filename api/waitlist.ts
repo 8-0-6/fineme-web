@@ -123,17 +123,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       });
     }
 
-    // Save contact after emails succeed (delayed to respect rate limit)
-    setTimeout(() => {
-      fetch('https://api.resend.com/contacts', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${apiKey}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, unsubscribed: false }),
-      }).catch((err) => console.error('Contact save failed (non-fatal):', err));
-    }, 1500);
+    // Save contact after emails succeed (awaited so it runs before function shuts down)
+    await fetch('https://api.resend.com/contacts', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, unsubscribed: false }),
+    }).catch((err) => console.error('Contact save failed (non-fatal):', err));
 
     return res.status(200).json({ success: true });
   } catch (err) {
