@@ -61,13 +61,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
                         <td style="background-color: #000000; padding: 24px 32px;">
                           <table cellpadding="0" cellspacing="0" border="0">
                             <tr>
-                              <!-- Circle: using a table cell with border-radius since SVG is stripped by Gmail -->
-                              <td style="padding-right: 10px; vertical-align: middle;">
-                                <div style="width: 22px; height: 22px; border-radius: 50%; border: 2.5px solid #bef264; display: inline-block; font-size: 0; line-height: 0;">&#8203;</div>
+                              <!-- Circle: using border-radius div since SVG is stripped by Gmail -->
+                              <td style="padding-right: 8px; vertical-align: middle; line-height: 1;">
+                                <div style="width: 20px; height: 20px; border-radius: 50%; border: 2px solid #bef264; display: inline-block; vertical-align: middle; font-size: 0; line-height: 20px;">&#8203;</div>
                               </td>
                               <!-- Fine (bold) Me (light) wordmark -->
                               <td style="vertical-align: middle; line-height: 1;">
-                                <span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; font-size: 19px; font-weight: 900; color: #ffffff; letter-spacing: -1px;">Fine</span><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; font-size: 19px; font-weight: 300; color: #ffffff; letter-spacing: -1px; padding-left: 2px;">Me</span>
+                                <span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; font-size: 19px; font-weight: 900; color: #ffffff; letter-spacing: -1px; vertical-align: middle;">Fine</span><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; font-size: 19px; font-weight: 300; color: #ffffff; letter-spacing: -1px; padding-left: 2px; vertical-align: middle;">Me</span>
                               </td>
                             </tr>
                           </table>
