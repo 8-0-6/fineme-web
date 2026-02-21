@@ -30,7 +30,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }).catch((err) => console.error('Contact save failed (non-fatal):', err));
 
     // Send both emails in parallel
-    await Promise.all([
+    const [notifyRes, confirmRes] = await Promise.all([
       // 1. Notify you
       fetch('https://api.resend.com/emails', {
         method: 'POST',
@@ -42,13 +42,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           from: 'FineMe <team@fineme.io>',
           to: 'team@fineme.io',
           subject: `New waitlist signup: ${email}`,
-          html: `
-            <div style="font-family: monospace; background: #000; color: #fff; padding: 32px; border-radius: 12px;">
-              <p style="color: #bef264; font-weight: 900; font-size: 18px; margin: 0 0 16px;">New waitlist signup</p>
-              <p style="color: #a1a1aa; margin: 0;">Email: <span style="color: #fff;">${email}</span></p>
-              <p style="color: #71717a; font-size: 12px; margin: 16px 0 0;">${new Date().toUTCString()}</p>
-            </div>
-          `,
+          html: `<div style="font-family: monospace; background: #000; color: #fff; padding: 32px;"><p style="color: #bef264; font-weight: 900; font-size: 18px; margin: 0 0 16px;">New waitlist signup</p><p style="color: #a1a1aa; margin: 0;">Email: <span style="color: #fff;">${email}</span></p><p style="color: #71717a; font-size: 12px; margin: 16px 0 0;">${new Date().toUTCString()}</p></div>`,
         }),
       }),
 
@@ -127,9 +121,23 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       }),
     ]);
 
+    // Log responses for debugging
+    const notifyBody = await notifyRes.json().catch(() => ({}));
+    const confirmBody = await confirmRes.json().catch(() => ({}));
+    console.log('Notify response:', notifyRes.status, JSON.stringify(notifyBody));
+    console.log('Confirm response:', confirmRes.status, JSON.stringify(confirmBody));
+
+    if (!notifyRes.ok || !confirmRes.ok) {
+      return res.status(500).json({
+        error: 'Email send failed',
+        notify: notifyBody,
+        confirm: confirmBody,
+      });
+    }
+
     return res.status(200).json({ success: true });
   } catch (err) {
     console.error('Resend error:', err);
-    return res.status(500).json({ error: 'Failed to send email' });
+    return res.status(500).json({ error: 'Failed to send email', detail: String(err) });
   }
 }
