@@ -54,23 +54,76 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           to: email,
           subject: "You're on the FineMe waitlist.",
           html: `
-            <div style="font-family: -apple-system, sans-serif; background: #000; color: #fff; padding: 48px 32px; max-width: 480px; margin: 0 auto;">
-              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 40px;">
-                <div style="width: 24px; height: 24px; border-radius: 50%; border: 2px solid #bef264;"></div>
-                <span style="font-weight: 900; font-size: 18px; letter-spacing: -1px;">Fine<span style="font-weight: 300;">Me</span></span>
-              </div>
+            <!DOCTYPE html>
+            <html lang="en">
+            <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
+            <body style="margin: 0; padding: 0; background-color: #f4f4f5; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;">
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f4f4f5; padding: 40px 16px;">
+                <tr>
+                  <td align="center">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 480px; background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
 
-              <h1 style="font-size: 28px; font-weight: 900; letter-spacing: -0.5px; margin: 0 0 12px;">You're on the list.</h1>
-              <p style="color: #a1a1aa; font-size: 16px; line-height: 1.6; margin: 0 0 32px;">
-                We'll email you the moment FineMe launches. No spam, just one email when we're live.
-              </p>
+                      <!-- Header bar -->
+                      <tr>
+                        <td style="background-color: #09090b; padding: 28px 36px;">
+                          <!-- Logo: SVG circle + Fine Me wordmark -->
+                          <table cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                              <td style="vertical-align: middle; padding-right: 10px;">
+                                <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+                                  <circle cx="14" cy="14" r="11" fill="none" stroke="#bef264" stroke-width="2.5"/>
+                                </svg>
+                              </td>
+                              <td style="vertical-align: middle;">
+                                <span style="font-size: 20px; font-weight: 900; color: #ffffff; letter-spacing: -1px; line-height: 1;">Fine</span><span style="font-size: 20px; font-weight: 300; color: #ffffff; letter-spacing: -1px; line-height: 1; margin-left: 2px;">Me</span>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
 
-              <div style="border-top: 1px solid #27272a; padding-top: 24px;">
-                <p style="color: #71717a; font-size: 13px; margin: 0;">
-                  In the meantime, your laziness is still untaxed. That changes soon.
-                </p>
-              </div>
-            </div>
+                      <!-- Body -->
+                      <tr>
+                        <td style="padding: 40px 36px 32px;">
+                          <h1 style="font-size: 26px; font-weight: 900; color: #09090b; letter-spacing: -0.5px; margin: 0 0 12px; line-height: 1.2;">You're on the list.</h1>
+                          <p style="font-size: 16px; color: #52525b; line-height: 1.7; margin: 0 0 28px;">
+                            We'll email you the moment FineMe launches.<br>No spam — just one email when we go live.
+                          </p>
+
+                          <!-- Accent callout -->
+                          <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                              <td style="background-color: #f4f4f5; border-left: 3px solid #bef264; border-radius: 4px; padding: 16px 20px;">
+                                <p style="font-size: 14px; font-weight: 600; color: #09090b; margin: 0 0 4px;">Your commitment starts now.</p>
+                                <p style="font-size: 13px; color: #71717a; margin: 0;">Miss your workout — pay your charity. We'll hold you to it.</p>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+
+                      <!-- Footer -->
+                      <tr>
+                        <td style="padding: 0 36px 36px;">
+                          <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                              <td style="border-top: 1px solid #e4e4e7; padding-top: 24px;">
+                                <p style="font-size: 12px; color: #a1a1aa; margin: 0 0 4px;">In the meantime, your laziness is still untaxed. That changes soon.</p>
+                                <p style="font-size: 12px; color: #d4d4d8; margin: 0;">
+                                  <a href="https://fineme.io" style="color: #a1a1aa; text-decoration: none;">fineme.io</a>
+                                </p>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </body>
+            </html>
           `,
         }),
       }),
