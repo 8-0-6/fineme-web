@@ -82,13 +82,24 @@ const steps = [
 const WaitlistForm: React.FC = () => {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !email.includes('@')) return;
     setStatus('loading');
-    await new Promise(r => setTimeout(r, 900));
-    setStatus('success');
+    try {
+      const res = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      if (!res.ok) throw new Error('Failed');
+      setStatus('success');
+    } catch {
+      setStatus('error');
+      setErrorMsg('Something went wrong. Please try again.');
+    }
   };
 
   if (status === 'success') {
@@ -131,6 +142,9 @@ const WaitlistForm: React.FC = () => {
       >
         {status === 'loading' ? 'Joining...' : 'Join Waitlist'}
       </button>
+      {status === 'error' && (
+        <p className="text-xs mt-3" style={{ color: '#ef4444' }}>{errorMsg}</p>
+      )}
     </form>
   );
 };
