@@ -19,16 +19,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    // Save to Resend Contacts (non-blocking — don't let this fail the emails)
-    fetch('https://api.resend.com/contacts', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, unsubscribed: false }),
-    }).catch((err) => console.error('Contact save failed (non-fatal):', err));
-
     // Send emails sequentially to stay within Resend's 2 req/sec rate limit
     // 1. Notify you
     const notifyRes = await fetch('https://api.resend.com/emails', {
@@ -132,6 +122,18 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         confirm: confirmBody,
       });
     }
+
+    // Save contact after emails succeed (delayed to respect rate limit)
+    setTimeout(() => {
+      fetch('https://api.resend.com/contacts', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, unsubscribed: false }),
+      }).catch((err) => console.error('Contact save failed (non-fatal):', err));
+    }, 1500);
 
     return res.status(200).json({ success: true });
   } catch (err) {
