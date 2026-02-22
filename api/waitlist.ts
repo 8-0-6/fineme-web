@@ -124,7 +124,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     // Save contact after emails succeed
-    const contactRes = await fetch('https://api.resend.com/contacts', {
+    const contactRes = await fetch('https://api.resend.com/audiences/14a87a4d-8923-4f15-be6f-7cd10f1be2d2/contacts', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${apiKey}`,
