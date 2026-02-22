@@ -138,7 +138,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const contactBody = await contactRes.json().catch(() => ({}));
     console.log('Contact save response:', contactRes.status, JSON.stringify(contactBody));
 
-    return res.status(200).json({ success: true, keyHint });
+    return res.status(200).json({ success: true, keyHint, contactSave: { status: contactRes.status, body: contactBody } });
   } catch (err) {
     console.error('Resend error:', err);
     return res.status(500).json({ error: 'Failed to send email', detail: String(err) });
