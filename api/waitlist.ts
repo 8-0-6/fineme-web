@@ -18,6 +18,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(500).json({ error: 'Server misconfiguration' });
   }
 
+  // Debug: expose last 6 chars of key so we can confirm which key Vercel is using
+  const keyHint = apiKey.slice(-6);
+
   try {
     // Send emails sequentially to stay within Resend's 2 req/sec rate limit
     // 1. Notify you
@@ -135,7 +138,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const contactBody = await contactRes.json().catch(() => ({}));
     console.log('Contact save response:', contactRes.status, JSON.stringify(contactBody));
 
-    return res.status(200).json({ success: true });
+    return res.status(200).json({ success: true, keyHint });
   } catch (err) {
     console.error('Resend error:', err);
     return res.status(500).json({ error: 'Failed to send email', detail: String(err) });
