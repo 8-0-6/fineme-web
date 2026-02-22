@@ -18,11 +18,12 @@ const EMAIL = 'support@fineme.io';
 interface SectionProps {
   number: string;
   title: string;
+  first?: boolean;
   children: React.ReactNode;
 }
 
-const Section: React.FC<SectionProps> = ({ number, title, children }) => (
-  <section style={{ borderBottom: `1px solid ${C.border}` }} className="py-8 sm:py-10">
+const Section: React.FC<SectionProps> = ({ number, title, first, children }) => (
+  <section style={first ? {} : { borderTop: `1px solid ${C.border}` }} className="py-8 sm:py-10">
     <div className="flex gap-4 sm:gap-5 mb-4">
       <span className="text-sm font-black flex-shrink-0 w-7 sm:w-8 pt-0.5" style={{ color: C.accent }}>{number}</span>
       <h2 className="text-lg sm:text-xl font-bold tracking-tight">{title}</h2>
@@ -119,7 +120,7 @@ export const TermsOfService: React.FC = () => {
       <div className="px-5 sm:px-8 md:px-12 pb-20 sm:pb-24">
         <div className="max-w-3xl mx-auto">
 
-          <Section number="1" title="Eligibility">
+          <Section number="1" title="Eligibility" first>
             <P>To use the Service, you must:</P>
             <UL items={[
               'Be at least 18 years of age.',
