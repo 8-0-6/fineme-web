@@ -126,6 +126,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       });
     }
 
+    // Wait 1s before contact save to stay within Resend's 2 req/sec rate limit
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
     // Save contact after emails succeed
     const contactRes = await fetch('https://api.resend.com/audiences/14a87a4d-8923-4f15-be6f-7cd10f1be2d2/contacts', {
       method: 'POST',
