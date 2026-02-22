@@ -77,7 +77,7 @@ export const PrivacyPolicy: React.FC = () => {
       </nav>
 
       {/* Header */}
-      <div className="pt-28 sm:pt-32 pb-10 sm:pb-12 px-5 sm:px-8 md:px-12" style={{ borderBottom: `1px solid ${C.border}` }}>
+      <div className="pt-28 sm:pt-32 pb-10 sm:pb-12 px-5 sm:px-8 md:px-12">
         <div className="max-w-3xl mx-auto">
           <div className="text-xs font-semibold tracking-widest mb-3" style={{ color: C.accent }}>LEGAL</div>
           <h1
