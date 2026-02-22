@@ -22,7 +22,7 @@ interface SectionProps {
 }
 
 const Section: React.FC<SectionProps> = ({ number, title, children }) => (
-  <section style={{ borderTop: `1px solid ${C.border}` }} className="py-8 sm:py-10">
+  <section style={{ borderBottom: `1px solid ${C.border}` }} className="py-8 sm:py-10">
     <div className="flex gap-4 sm:gap-5 mb-4">
       <span className="text-sm font-black flex-shrink-0 w-7 sm:w-8 pt-0.5" style={{ color: C.accent }}>{number}</span>
       <h2 className="text-lg sm:text-xl font-bold tracking-tight">{title}</h2>
