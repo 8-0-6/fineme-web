@@ -54,6 +54,17 @@ const FadeUp: React.FC<{ children: React.ReactNode; delay?: number; className?: 
   );
 };
 
+// ─── Shared layout constants ──────────────────────────────────────────────────
+// All content sections use these for consistent rhythm
+const SECTION_PAD = 'py-20 md:py-24 px-5 sm:px-8';
+const H2_SIZE = { fontSize: 'clamp(1.75rem, 6vw, 3rem)' };
+const LABEL_CLASS = 'text-xs font-semibold tracking-widest mb-4';
+
+// ─── Divider ─────────────────────────────────────────────────────────────────
+const Divider = () => (
+  <div style={{ height: 1, background: `linear-gradient(to right, transparent, ${C.border}, transparent)` }} />
+);
+
 // ─── How It Works steps ───────────────────────────────────────────────────────
 const steps = [
   {
@@ -197,10 +208,7 @@ export const LandingPage: React.FC = () => {
 
           <h1
             className="font-black leading-tight mb-6"
-            style={{
-              fontSize: 'clamp(2rem, 8vw, 3.75rem)',
-              letterSpacing: '0.02em',
-            }}
+            style={{ fontSize: 'clamp(2rem, 8vw, 3.75rem)', letterSpacing: '0.02em' }}
           >
             YOUR <span style={{ color: C.accent }}>LAZINESS</span><br />
             JUST BECAME<br />
@@ -217,27 +225,20 @@ export const LandingPage: React.FC = () => {
         </motion.div>
       </section>
 
-      {/* ── Divider ── */}
-      <div style={{ height: 1, background: `linear-gradient(to right, transparent, ${C.border}, transparent)` }} />
+      <Divider />
 
-      {/* ── The Hook ── */}
-      <section className="py-20 md:py-24 px-5 sm:px-8">
+      {/* ── THE PROBLEM ── */}
+      <section className={SECTION_PAD}>
         <div className="max-w-xl mx-auto text-center">
           <FadeUp>
-            <div className="text-xs font-semibold tracking-widest mb-4" style={{ color: C.accent }}>THE REAL PROBLEM</div>
-            <h2
-              className="font-black tracking-tight mb-6"
-              style={{ fontSize: 'clamp(1.75rem, 6vw, 3rem)', lineHeight: 1.15 }}
-            >
+            <div className={LABEL_CLASS} style={{ color: C.accent }}>THE PROBLEM</div>
+            <h2 className="font-black tracking-tight mb-6" style={{ ...H2_SIZE, lineHeight: 1.15 }}>
               Spent months working out and have{' '}
               <span style={{ color: C.accent }}>nothing to show for it?</span>
             </h2>
           </FadeUp>
           <FadeUp delay={0.15}>
-            <p
-              className="text-lg sm:text-xl font-medium leading-relaxed"
-              style={{ color: C.textSecondary }}
-            >
+            <p className="text-lg sm:text-xl font-medium leading-relaxed" style={{ color: C.textSecondary }}>
               It's not your effort. It's your consistency.{' '}
               <span style={{ color: C.text }}>Results don't come from hard days. They come from every day.</span>
             </p>
@@ -245,18 +246,14 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ── Divider ── */}
-      <div style={{ height: 1, background: `linear-gradient(to right, transparent, ${C.border}, transparent)` }} />
+      <Divider />
 
-      {/* ── The Problem ── */}
-      <section className="py-20 md:py-24 px-5 sm:px-8">
+      {/* ── THE SOLUTION ── */}
+      <section className={SECTION_PAD}>
         <div className="max-w-3xl mx-auto text-center">
           <FadeUp>
-            <div className="text-xs font-semibold tracking-widest mb-4" style={{ color: C.accent }}>THE PROBLEM</div>
-            <h2
-              className="font-black tracking-tight mb-12"
-              style={{ fontSize: 'clamp(1.75rem, 6vw, 3rem)' }}
-            >
+            <div className={LABEL_CLASS} style={{ color: C.accent }}>THE SOLUTION</div>
+            <h2 className="font-black tracking-tight mb-10" style={H2_SIZE}>
               Motivation lies.<br />
               <span style={{ color: C.textSecondary }}>Consequences don't.</span>
             </h2>
@@ -265,7 +262,7 @@ export const LandingPage: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <FadeUp delay={0.1}>
               <div className="rounded-2xl p-5 sm:p-6 text-left h-full" style={{ background: C.surfaceSecondary, border: `1px solid ${C.border}` }}>
-                <div className="text-xs font-semibold tracking-widest mb-4" style={{ color: C.textTertiary }}>OTHER APPS</div>
+                <div className={LABEL_CLASS} style={{ color: C.textTertiary }}>OTHER APPS</div>
                 {['Motivational notifications', 'Streak badges', 'Virtual trophies', 'No real stakes'].map(t => (
                   <div key={t} className="flex items-center gap-3 py-2.5" style={{ borderBottom: `1px solid ${C.border}` }}>
                     <Icon.X />
@@ -276,7 +273,7 @@ export const LandingPage: React.FC = () => {
             </FadeUp>
             <FadeUp delay={0.2}>
               <div className="rounded-2xl p-5 sm:p-6 text-left h-full" style={{ background: C.surfaceSecondary, border: `1px solid ${C.accent}` }}>
-                <div className="text-xs font-semibold tracking-widest mb-4" style={{ color: C.accent }}>FINEME</div>
+                <div className={LABEL_CLASS} style={{ color: C.accent }}>FINEME</div>
                 {['Real money on the line', 'AI rep verification', 'Charity donation on miss', 'Behavioral science-backed'].map(t => (
                   <div key={t} className="flex items-center gap-3 py-2.5" style={{ borderBottom: `1px solid ${C.border}` }}>
                     <Icon.Check />
@@ -289,18 +286,14 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ── Divider ── */}
-      <div style={{ height: 1, background: `linear-gradient(to right, transparent, ${C.border}, transparent)` }} />
+      <Divider />
 
-      {/* ── How It Works ── */}
-      <section className="py-20 md:py-24 px-5 sm:px-8">
+      {/* ── HOW IT WORKS ── */}
+      <section className={SECTION_PAD}>
         <div className="max-w-3xl mx-auto">
-          <FadeUp className="text-center mb-12 md:mb-16">
-            <div className="text-xs font-semibold tracking-widest mb-4" style={{ color: C.accent }}>HOW IT WORKS</div>
-            <h2
-              className="font-black tracking-tight"
-              style={{ fontSize: 'clamp(1.75rem, 6vw, 3rem)' }}
-            >
+          <FadeUp className="text-center mb-10">
+            <div className={LABEL_CLASS} style={{ color: C.accent }}>HOW IT WORKS</div>
+            <h2 className="font-black tracking-tight" style={H2_SIZE}>
               Simple. Brutal. Effective.
             </h2>
           </FadeUp>
@@ -321,97 +314,58 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ── Divider ── */}
-      <div style={{ height: 1, background: `linear-gradient(to right, transparent, ${C.border}, transparent)` }} />
+      <Divider />
 
-      {/* ── Science ── */}
-      <section className="py-20 md:py-28 px-5 sm:px-8">
-        <div className="max-w-2xl mx-auto">
-          <FadeUp>
-            {/* Label */}
-            <div className="text-xs font-semibold tracking-widest mb-4" style={{ color: C.accent }}>SCIENCE BASED.</div>
-            <h2
-              className="font-black tracking-tight mb-10"
-              style={{ fontSize: 'clamp(1.75rem, 6vw, 3rem)' }}
-            >
-              Loss hurts more than<br />
+      {/* ── SCIENCE ── */}
+      <section className={SECTION_PAD}>
+        <div className="max-w-3xl mx-auto">
+          <FadeUp className="text-center mb-10">
+            <div className={LABEL_CLASS} style={{ color: C.accent }}>SCIENCE BASED.</div>
+            <h2 className="font-black tracking-tight" style={H2_SIZE}>
+              Loss hurts more than{' '}
               <span style={{ color: C.textSecondary }}>winning feels good.</span>
             </h2>
-
-            {/* Giant quote marks + quote */}
-            <div className="relative mb-10">
-              {/* Decorative quotation marks */}
-              <div
-                className="absolute -top-4 -left-2 select-none"
-                style={{
-                  fontSize: 'clamp(5rem, 16vw, 9rem)',
-                  lineHeight: 1,
-                  fontWeight: 900,
-                  color: C.surfaceSecondary,
-                  fontFamily: 'Georgia, serif',
-                }}
-                aria-hidden="true"
-              >
-                "
-              </div>
-
-              {/* Quote text */}
-              <p
-                className="relative font-bold leading-tight"
-                style={{
-                  fontSize: 'clamp(1.5rem, 5vw, 2.25rem)',
-                  color: C.text,
-                  paddingTop: 'clamp(2.5rem, 6vw, 4rem)',
-                }}
-              >
-                Losses loom larger than gains... The pain of losing is psychologically about{' '}
-                <span style={{ color: C.accent }}>twice as powerful</span> as the pleasure of gaining.
-              </p>
-            </div>
-
-            {/* Attribution block — left-border style */}
-            <div
-              className="pl-5 mb-10"
-              style={{ borderLeft: `3px solid ${C.accent}` }}
-            >
-              <div className="font-bold text-base" style={{ color: C.text }}>Prospect Theory</div>
-              <div className="text-sm mt-0.5" style={{ color: C.textSecondary }}>Kahneman &amp; Tversky (1979)</div>
-              <div
-                className="text-xs font-semibold tracking-widest mt-1"
-                style={{ color: C.textTertiary, fontFamily: 'monospace' }}
-              >
-                NOBEL PRIZE IN ECONOMICS
-              </div>
-            </div>
-
-            {/* Fact chip */}
-            <div
-              className="rounded-2xl p-5 sm:p-6"
-              style={{ background: C.surfaceSecondary, border: `1px solid ${C.border}` }}
-            >
-              <p className="text-sm sm:text-base leading-relaxed" style={{ color: C.textSecondary }}>
-                <span className="font-bold" style={{ color: C.text }}>FACT: </span>
-                People are{' '}
-                <span className="font-bold" style={{ color: C.accent }}>2.5x more likely</span>
-                {' '}to stick to a habit when money is at risk compared to reward-based systems.
-              </p>
-            </div>
           </FadeUp>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <FadeUp delay={0.1}>
+              {/* Quote card */}
+              <div className="rounded-2xl p-5 sm:p-6 h-full" style={{ background: C.surfaceSecondary, border: `1px solid ${C.border}` }}>
+                <p className="text-base font-semibold leading-snug mb-5" style={{ color: C.text }}>
+                  "The pain of losing is psychologically{' '}
+                  <span style={{ color: C.accent }}>twice as powerful</span>{' '}
+                  as the pleasure of gaining."
+                </p>
+                <div className="pl-4" style={{ borderLeft: `2px solid ${C.accent}` }}>
+                  <div className="font-bold text-sm" style={{ color: C.text }}>Prospect Theory</div>
+                  <div className="text-xs mt-0.5" style={{ color: C.textSecondary }}>Kahneman &amp; Tversky (1979)</div>
+                  <div className="text-xs font-semibold tracking-widest mt-1" style={{ color: C.textTertiary }}>NOBEL PRIZE IN ECONOMICS</div>
+                </div>
+              </div>
+            </FadeUp>
+            <FadeUp delay={0.2}>
+              {/* Fact card */}
+              <div className="rounded-2xl p-5 sm:p-6 h-full flex flex-col justify-center" style={{ background: C.surfaceSecondary, border: `1px solid ${C.border}` }}>
+                <div className="font-black mb-3" style={{ fontSize: 'clamp(2.5rem, 8vw, 4rem)', color: C.accent, lineHeight: 1 }}>2.5×</div>
+                <p className="text-sm leading-relaxed" style={{ color: C.textSecondary }}>
+                  People are{' '}
+                  <span className="font-bold" style={{ color: C.text }}>2.5x more likely</span>
+                  {' '}to stick to a habit when money is on the line vs. reward-based apps.
+                </p>
+              </div>
+            </FadeUp>
+          </div>
         </div>
       </section>
 
-      {/* ── Divider ── */}
-      <div style={{ height: 1, background: `linear-gradient(to right, transparent, ${C.border}, transparent)` }} />
+      <Divider />
 
-      {/* ── Final CTA ── */}
-      <section id="waitlist" className="py-24 md:py-32 px-5 sm:px-8">
+      {/* ── FINAL CTA ── */}
+      <section id="waitlist" className={SECTION_PAD}>
         <div className="max-w-xl mx-auto text-center">
           <FadeUp>
-            <div className="text-xs font-semibold tracking-widest mb-4" style={{ color: C.accent }}>EARLY ACCESS</div>
-            <h2
-              className="font-black tracking-tight mb-4"
-              style={{ fontSize: 'clamp(1.75rem, 6vw, 3rem)' }}
-            >
+            <div className={LABEL_CLASS} style={{ color: C.accent }}>EARLY ACCESS</div>
+            <h2 className="font-black tracking-tight mb-4" style={H2_SIZE}>
               Ready to start<br />showing up?
             </h2>
             <p className="text-base sm:text-lg mb-10" style={{ color: C.textSecondary }}>
@@ -425,8 +379,7 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ── Divider ── */}
-      <div style={{ height: 1, background: `linear-gradient(to right, transparent, ${C.border}, transparent)` }} />
+      <Divider />
 
       {/* ── Footer ── */}
       <footer className="px-5 sm:px-8 md:px-12 py-8">
@@ -435,18 +388,10 @@ export const LandingPage: React.FC = () => {
             2026 FineMe Inc. All rights reserved.
           </div>
           <div className="flex gap-6">
-            <a
-              href="#/privacy"
-              className="text-xs transition-colors hover:text-white"
-              style={{ color: C.textTertiary }}
-            >
+            <a href="#/privacy" className="text-xs transition-colors hover:text-white" style={{ color: C.textTertiary }}>
               Privacy Policy
             </a>
-            <a
-              href="#/terms"
-              className="text-xs transition-colors hover:text-white"
-              style={{ color: C.textTertiary }}
-            >
+            <a href="#/terms" className="text-xs transition-colors hover:text-white" style={{ color: C.textTertiary }}>
               Terms of Service
             </a>
           </div>
