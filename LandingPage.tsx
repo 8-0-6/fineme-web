@@ -220,6 +220,34 @@ export const LandingPage: React.FC = () => {
       {/* ── Divider ── */}
       <div style={{ height: 1, background: `linear-gradient(to right, transparent, ${C.border}, transparent)` }} />
 
+      {/* ── The Hook ── */}
+      <section className="py-24 md:py-32 px-5 sm:px-8">
+        <div className="max-w-2xl mx-auto text-center">
+          <FadeUp>
+            <h2
+              className="font-black tracking-tight mb-6"
+              style={{ fontSize: 'clamp(1.75rem, 6vw, 3rem)', lineHeight: 1.15 }}
+            >
+              Spent months working out<br />
+              and have <span style={{ color: C.accent }}>nothing to show for it?</span>
+            </h2>
+          </FadeUp>
+          <FadeUp delay={0.15}>
+            <p
+              className="text-lg sm:text-xl font-medium leading-relaxed"
+              style={{ color: C.textSecondary }}
+            >
+              It's not your effort. It's your consistency.
+              <br />
+              <span style={{ color: C.text }}>Results don't come from hard days. They come from every day.</span>
+            </p>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* ── Divider ── */}
+      <div style={{ height: 1, background: `linear-gradient(to right, transparent, ${C.border}, transparent)` }} />
+
       {/* ── The Problem ── */}
       <section className="py-20 md:py-24 px-5 sm:px-8">
         <div className="max-w-3xl mx-auto text-center">
