@@ -221,15 +221,16 @@ export const LandingPage: React.FC = () => {
       <div style={{ height: 1, background: `linear-gradient(to right, transparent, ${C.border}, transparent)` }} />
 
       {/* ── The Hook ── */}
-      <section className="py-24 md:py-32 px-5 sm:px-8">
-        <div className="max-w-2xl mx-auto text-center">
+      <section className="py-20 md:py-24 px-5 sm:px-8">
+        <div className="max-w-xl mx-auto text-center">
           <FadeUp>
+            <div className="text-xs font-semibold tracking-widest mb-4" style={{ color: C.accent }}>THE REAL PROBLEM</div>
             <h2
               className="font-black tracking-tight mb-6"
               style={{ fontSize: 'clamp(1.75rem, 6vw, 3rem)', lineHeight: 1.15 }}
             >
-              Spent months working out<br />
-              and have <span style={{ color: C.accent }}>nothing to show for it?</span>
+              Spent months working out and have{' '}
+              <span style={{ color: C.accent }}>nothing to show for it?</span>
             </h2>
           </FadeUp>
           <FadeUp delay={0.15}>
@@ -237,8 +238,7 @@ export const LandingPage: React.FC = () => {
               className="text-lg sm:text-xl font-medium leading-relaxed"
               style={{ color: C.textSecondary }}
             >
-              It's not your effort. It's your consistency.
-              <br />
+              It's not your effort. It's your consistency.{' '}
               <span style={{ color: C.text }}>Results don't come from hard days. They come from every day.</span>
             </p>
           </FadeUp>
@@ -329,7 +329,14 @@ export const LandingPage: React.FC = () => {
         <div className="max-w-2xl mx-auto">
           <FadeUp>
             {/* Label */}
-            <div className="text-xs font-semibold tracking-widest mb-10" style={{ color: C.accent }}>SCIENCE BASED.</div>
+            <div className="text-xs font-semibold tracking-widest mb-4" style={{ color: C.accent }}>SCIENCE BASED.</div>
+            <h2
+              className="font-black tracking-tight mb-10"
+              style={{ fontSize: 'clamp(1.75rem, 6vw, 3rem)' }}
+            >
+              Loss hurts more than<br />
+              <span style={{ color: C.textSecondary }}>winning feels good.</span>
+            </h2>
 
             {/* Giant quote marks + quote */}
             <div className="relative mb-10">
