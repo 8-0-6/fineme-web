@@ -9,7 +9,7 @@
     </pattern>
     <!-- Glow filter for circle -->
     <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feGaussianBlur stdDeviation="14" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
@@ -18,22 +18,24 @@
   </defs>
   <rect width="1200" height="630" fill="url(#grid)"/>
 
-  <!-- Green glow blob behind circle -->
-  <ellipse cx="200" cy="315" rx="180" ry="180" fill="#bef264" opacity="0.07"/>
+  <!-- Subtle green glow behind logo -->
+  <ellipse cx="165" cy="300" rx="140" ry="140" fill="#bef264" opacity="0.06"/>
 
-  <!-- The green circle — logo mark, large -->
-  <circle cx="200" cy="315" r="110" fill="none" stroke="#bef264" stroke-width="14" filter="url(#glow)"/>
+  <!-- Logo icon: rounded black square (matching app icon style) -->
+  <rect x="65" y="190" width="200" height="200" rx="48" fill="#09090b" stroke="#27272a" stroke-width="1.5"/>
+
+  <!-- Green circle inside logo icon -->
+  <circle cx="165" cy="290" r="74" fill="none" stroke="#bef264" stroke-width="11" filter="url(#glow)"/>
 
   <!-- FineMe wordmark -->
-  <text x="350" y="290" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="96" font-weight="900" fill="#ffffff" letter-spacing="-3">Fine</text>
-  <text x="570" y="290" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="96" font-weight="300" fill="#ffffff" letter-spacing="-3">Me</text>
+  <text x="310" y="278" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="84" fill="#ffffff" letter-spacing="-3"><tspan font-weight="900">Fine</tspan><tspan font-weight="300">Me</tspan></text>
 
-  <!-- Divider line -->
-  <rect x="350" y="315" width="560" height="2" fill="#27272a"/>
+  <!-- Divider -->
+  <rect x="310" y="302" width="570" height="1.5" fill="#27272a"/>
 
   <!-- Tagline -->
-  <text x="350" y="370" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="28" font-weight="400" fill="#a1a1aa" letter-spacing="0.5">Your laziness just became a tax write-off.</text>
+  <text x="310" y="352" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="27" font-weight="400" fill="#a1a1aa" letter-spacing="0.2">Your laziness just became a tax write-off.</text>
 
   <!-- Domain -->
-  <text x="350" y="430" font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" font-size="20" font-weight="600" fill="#bef264" letter-spacing="2">FINEME.IO</text>
+  <text x="310" y="416" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="17" font-weight="600" fill="#bef264" letter-spacing="3">FINEME.IO</text>
 </svg>
