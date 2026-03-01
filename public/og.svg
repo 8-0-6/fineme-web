@@ -15,13 +15,13 @@
   <rect width="1200" height="630" fill="url(#grid)"/>
 
   <!-- Ambient glow behind circle -->
-  <ellipse cx="396" cy="248" rx="100" ry="100" fill="#bef264" opacity="0.08"/>
+  <ellipse cx="382" cy="248" rx="130" ry="130" fill="#bef264" opacity="0.06"/>
 
-  <!-- Green circle sized to match FineMe cap height (~78px at font-size 108) -->
-  <circle cx="396" cy="248" r="39" fill="none" stroke="#bef264" stroke-width="6" filter="url(#glow)"/>
+  <!-- Green circle — exact proportions of landing page logo scaled 6× (w-6/border-2 at 18px → r=72/sw=12 at 108px) -->
+  <circle cx="382" cy="248" r="72" fill="none" stroke="#bef264" stroke-width="12" filter="url(#glow)"/>
 
-  <!-- FineMe wordmark — x positioned so circle+gap+text is horizontally centered -->
-  <text x="453" y="287" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="108" fill="#ffffff" letter-spacing="-4"><tspan font-weight="900">Fine</tspan><tspan font-weight="300">Me</tspan></text>
+  <!-- FineMe wordmark — gap=36px (gap-1.5 × 6), letter-spacing=-6 (-1px × 6), Me dx=13 (0.12em × 108) -->
+  <text x="490" y="302" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="108" fill="#ffffff" letter-spacing="-6"><tspan font-weight="900">Fine</tspan><tspan font-weight="300" dx="13">Me</tspan></text>
 
   <!-- Tagline centered -->
   <text x="600" y="368" text-anchor="middle" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="26" font-weight="400" fill="#71717a" letter-spacing="0.2">Your laziness just became a tax write-off.</text>
