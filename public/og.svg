@@ -1,15 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <!-- Background -->
   <rect width="1200" height="630" fill="#000000"/>
-
-  <!-- Subtle grid texture -->
   <defs>
     <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
       <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#18181b" stroke-width="1"/>
     </pattern>
-    <!-- Glow filter for circle -->
     <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="14" result="blur"/>
+      <feGaussianBlur stdDeviation="12" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
@@ -18,24 +14,18 @@
   </defs>
   <rect width="1200" height="630" fill="url(#grid)"/>
 
-  <!-- Subtle green glow behind logo -->
-  <ellipse cx="165" cy="300" rx="140" ry="140" fill="#bef264" opacity="0.06"/>
+  <!-- Ambient glow behind circle -->
+  <ellipse cx="396" cy="248" rx="100" ry="100" fill="#bef264" opacity="0.08"/>
 
-  <!-- Logo icon: rounded black square (matching app icon style) -->
-  <rect x="65" y="190" width="200" height="200" rx="48" fill="#09090b" stroke="#27272a" stroke-width="1.5"/>
+  <!-- Green circle sized to match FineMe cap height (~78px at font-size 108) -->
+  <circle cx="396" cy="248" r="39" fill="none" stroke="#bef264" stroke-width="6" filter="url(#glow)"/>
 
-  <!-- Green circle inside logo icon -->
-  <circle cx="165" cy="290" r="74" fill="none" stroke="#bef264" stroke-width="11" filter="url(#glow)"/>
+  <!-- FineMe wordmark — x positioned so circle+gap+text is horizontally centered -->
+  <text x="453" y="287" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="108" fill="#ffffff" letter-spacing="-4"><tspan font-weight="900">Fine</tspan><tspan font-weight="300">Me</tspan></text>
 
-  <!-- FineMe wordmark -->
-  <text x="310" y="278" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="84" fill="#ffffff" letter-spacing="-3"><tspan font-weight="900">Fine</tspan><tspan font-weight="300">Me</tspan></text>
+  <!-- Tagline centered -->
+  <text x="600" y="368" text-anchor="middle" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="26" font-weight="400" fill="#71717a" letter-spacing="0.2">Your laziness just became a tax write-off.</text>
 
-  <!-- Divider -->
-  <rect x="310" y="302" width="570" height="1.5" fill="#27272a"/>
-
-  <!-- Tagline -->
-  <text x="310" y="352" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="27" font-weight="400" fill="#a1a1aa" letter-spacing="0.2">Your laziness just became a tax write-off.</text>
-
-  <!-- Domain -->
-  <text x="310" y="416" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="17" font-weight="600" fill="#bef264" letter-spacing="3">FINEME.IO</text>
+  <!-- Domain centered -->
+  <text x="600" y="438" text-anchor="middle" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="15" font-weight="600" fill="#bef264" letter-spacing="3">FINEME.IO</text>
 </svg>
