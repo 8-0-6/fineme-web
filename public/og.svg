@@ -5,7 +5,7 @@
       <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#18181b" stroke-width="1"/>
     </pattern>
     <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feGaussianBlur stdDeviation="18" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
@@ -15,7 +15,7 @@
   <rect width="1200" height="630" fill="url(#grid)"/>
 
   <!-- Ambient glow behind circle -->
-  <ellipse cx="382" cy="248" rx="130" ry="130" fill="#bef264" opacity="0.06"/>
+  <ellipse cx="382" cy="248" rx="130" ry="130" fill="#bef264" opacity="0.09"/>
 
   <!-- Green circle — exact proportions of landing page logo scaled 6× (w-6/border-2 at 18px → r=72/sw=12 at 108px) -->
   <circle cx="382" cy="248" r="72" fill="none" stroke="#bef264" stroke-width="12" filter="url(#glow)"/>
@@ -24,8 +24,8 @@
   <text x="490" y="302" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="108" fill="#ffffff" letter-spacing="-6"><tspan font-weight="900">Fine</tspan><tspan font-weight="300" dx="13">Me</tspan></text>
 
   <!-- Tagline centered -->
-  <text x="600" y="368" text-anchor="middle" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="26" font-weight="400" fill="#71717a" letter-spacing="0.2">Your laziness just became a tax write-off.</text>
+  <text x="600" y="415" text-anchor="middle" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="26" font-weight="400" fill="#71717a" letter-spacing="0.2">Your laziness just became a tax write-off.</text>
 
   <!-- Domain centered -->
-  <text x="600" y="438" text-anchor="middle" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="15" font-weight="600" fill="#bef264" letter-spacing="3">FINEME.IO</text>
+  <text x="600" y="480" text-anchor="middle" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="15" font-weight="600" fill="#bef264" letter-spacing="3">FINEME.IO</text>
 </svg>
