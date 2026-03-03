@@ -338,6 +338,8 @@ success:          #22c55e
 | Edge Functions   | `supabase functions deploy <name>`            | Supabase Cloud |
 | DB Migrations    | `supabase db push` or manual SQL in dashboard  | Supabase Cloud |
 
+**Vercel Root Directory:** Must be set in the dashboard only — **Project → Settings → General → Root Directory** — set to `web`. It cannot be set in `vercel.json` (schema does not allow it).
+
 ---
 
 ## 12. Testing
